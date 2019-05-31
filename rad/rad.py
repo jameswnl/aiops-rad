@@ -144,7 +144,7 @@ def preprocess(frame, index=None, drop=None):
     for column in df.select_dtypes(include=(object, bool)):
 
         # convert the non-numeric column as categorical and overwrite column
-        logging.info("Mapping `{}` to integer".format(column))
+        logging.debug("Mapping `{}` to integer".format(column))
         category = df[column].astype("category")
         df[column] = category.cat.codes.astype(float)
 
@@ -333,8 +333,8 @@ class RADIsolationForest(IsolationForest):
                                      "observed_value": sample_mean,
                                      "normal_mean": pop_mean}
                         anomalous_features.append(a_feature)
-                    logging.info("Column: {}, x={}".format(column, sample_mean))
-                    logging.info("mu={}".format(pop_mean))
+                    logging.debug("Column: {}, x={}".format(column, sample_mean))
+                    logging.debug("mu={}".format(pop_mean))
                 pred["anomalous_features"] = anomalous_features
                 pred["num_features"] = len(anomalous_features)
         logging.info("Predictions and contrast OK")
