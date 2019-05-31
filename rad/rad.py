@@ -19,7 +19,7 @@ from sklearn.ensemble import IsolationForest
 
 __version__ = "0.10"
 
-
+logging.getLogger('matplotlib').setLevel(logging.WARNING)
 logging.basicConfig(format="%(asctime)s | "+\
                            "%(funcName)s | "+\
                            "#%(lineno)d | "+\
